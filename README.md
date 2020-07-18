@@ -1,1 +1,1 @@
-# My-solutioins-of-problems-
+# my solutions to some problems-
