@@ -1,0 +1,55 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+stack<int>pila2;vector<int>pila1;
+int n,k,m,d;
+main()
+{
+  ios_base::sync_with_stdio(0);cin.tie(0);
+  cin>>n>>k;
+  d=1;
+  while(d<=k ){
+    pila1.push_back(d);
+    d++;
+  }
+  d=n;
+  while( d>k){
+    pila2.push(d);
+    d--;
+  }
+  cin>>m;
+  while(m--){
+        int p;
+    char x,y;
+    cin>>x>>y;
+    if(x=='G'){
+        if(y=='I'){
+            p=pila1.back();
+              pila2.push(p);pila1.pop_back();
+        }else
+        if(y=='D'){
+          p=pila2.top();
+          pila1.push_back(p);
+          pila2.pop();}
+    }else
+       if(y=='I'){
+        pila1.pop_back();
+       }else
+       if(y=='D'){
+        pila2.pop();}
+
+  }
+  cout<<pila1.size()<<"\n";
+  reverse(pila1.begin(),pila1.end());
+  while(!pila1.empty()){
+      cout<<pila1.back()<<" ";
+       pila1.pop_back();
+  }
+  cout<<"\n";
+   cout<<pila2.size()<<"\n";
+  while(!pila2.empty()){
+      cout<<pila2.top()<<" ";
+       pila2.pop();
+  }
+
+}
