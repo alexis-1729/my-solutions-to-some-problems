@@ -1,0 +1,56 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+struct nodo{
+int x,y,p;
+};
+nodo hi,pa;
+queue<nodo>cola;
+int n,m,mayor=0;
+char ma[2002][2002];
+bool ma2[2002][2002];
+int v[2002][2002];
+int vx[]={0,0,1,-1};
+int vy[]={1,-1,0,0};
+int main()
+{
+cin>>n>>m;
+for(int i=1;i<=n;i++){
+for(int j=1;j<=m;j++){
+        cin>>ma[i][j];
+if(ma[i][j]=='G'){
+    cola.push({i,j,0});
+    ma2[i][j]=true;
+}
+}
+}
+  while(!cola.empty()){
+    pa=cola.front();
+    cola.pop();
+
+
+    for(int i=0;i<4;i++){
+           hi=pa;
+        hi.x+=vx[i];
+        hi.y+=vy[i];
+        if(hi.x>=1&&hi.x<=n&&hi.y>=1&&hi.y<=m&&!ma2[hi.x][hi.y]&&ma[hi.x][hi.y]!='#'){
+            hi.p++;
+           // cout<<hi.p<<" "<<"\n";
+            ma2[hi.x][hi.y]=true;
+            v[hi.x][hi.y]=hi.p;
+            cola.push(hi);
+        }
+    }
+  }
+  for(int i=1;i<=n;i++){
+    for(int j=1;j<=m;j++){
+
+       if(v[i][j]>mayor)
+       {
+           mayor=v[i][j];
+       }
+    }
+  }
+    cout<<mayor;
+    return 0;
+}
