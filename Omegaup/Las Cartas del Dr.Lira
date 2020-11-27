@@ -1,0 +1,17 @@
+#include <iostream>
+
+using namespace std;
+int n,r=0;
+ main() {
+	
+	cin>>n;
+	for(int i=1;i<=n;i++){
+	
+		char p;
+		cin>>p;
+		if((i%2 && p=='0')|| (!(i%2)&& p=='1'))r++;
+}
+	cout<<min(r,n-r);
+	
+	
+}
