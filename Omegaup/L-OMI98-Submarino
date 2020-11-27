@@ -1,0 +1,41 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+int k,n,t;
+vector<int>vx[101];bool vb[101];
+queue<int>cola;
+int solve()
+{
+    int total=0,ti=1;
+    cola.push(k);
+    vb[k]=true;
+    while(ti++<t  && !cola.empty()){
+        int tam=cola.size();
+        for(int i=0;i<tam;i++){
+            for(int nxt:vx[cola.front()])
+                if(!vb[nxt]){
+                vb[nxt]=true;
+                cola.push(nxt);
+                total++;
+                }
+                cola.pop();
+
+        }
+    }
+    return total;
+}
+
+
+main()
+{
+    ios_base::sync_with_stdio(0);cin.tie(0);
+    cin>>k>>n>>t;
+    for(int i=0;i<n;i++){
+        int x,y;
+        cin>>x>>y;
+        vx[x].push_back(y);
+        vx[y].push_back(x);
+    }
+
+    cout<<solve();
+}
