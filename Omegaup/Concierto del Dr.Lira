@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int x,y,n;int vx[52];int dp[51][5000];
+int  solve(int id,int tt){
+	if(tt>y || tt<0)return -1;
+	if(id==n)return tt;
+	
+	if(dp[id][tt]) {
+	return dp[id][tt];} 
+	 else
+	 	dp[id][tt]=max(solve(id+1,tt+vx[id]),solve(id+1,tt-vx[id]) );
+	 	
+	 return  dp[id][tt];
+}
+
+
+main() {
+ ios_base::sync_with_stdio(0);cin.tie(0);
+cin>>n;
+for(int i=0;i<n;i++){
+	cin>>vx[i];
+}
+cin>>x>>y;
+cout<<solve(0,x);
+
+}
