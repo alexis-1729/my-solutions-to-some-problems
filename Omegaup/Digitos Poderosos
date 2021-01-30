@@ -1,0 +1,25 @@
+#include <iostream>
+
+using namespace std;
+#define lli unsigned long long int
+lli n,x,y;
+lli digit(lli x,lli y){
+    if(x==0)
+        return y;
+    digit((x/10),y+(x%10));
+}
+
+lli com(lli n){
+    if(n<10)
+        return n;
+    com(digit(n,0));
+}
+ main()
+{
+    ios_base::sync_with_stdio(0);cin.tie(0);
+   cin>>n;
+   for(int i=1;i<=n;i++){
+    cin>>x>>y;
+        cout<<com(com(x)*y)<<"\n";
+   }
+}
