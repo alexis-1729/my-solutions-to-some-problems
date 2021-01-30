@@ -1,0 +1,18 @@
+#include <iostream>
+
+using namespace std;
+long long  dp[36][36];int n,m;
+main() {
+	ios_base::sync_with_stdio(0);cin.tie(0);
+	cin>>n;
+	if(n==0){cout<<1; return 0;}
+	dp[0][0]=1;
+	for(int	i=0;i<=n;i++){
+		for(int j=0;j<=n;j++){
+			dp[i+1][j]+=dp[i][j];
+			dp[i][j+1]+=dp[i][j];
+
+
+		}}	cout<<dp[n][n];
+
+}
