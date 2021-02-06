@@ -1,0 +1,21 @@
+#include <bits/stdc++.h>
+using namespace std;
+struct inf{
+int in,fn;
+}vx[16];int ans[10000];
+ main()
+{int j,n;
+    ios_base::sync_with_stdio(0);cin.tie(0);
+      cin>>n;
+      for(int i=0;i<n;i++)cin>>vx[i].in>>vx[i].fn;
+
+
+      for(int i=0;i<n;i++){
+        for( j=(3*60);j;j--){
+                if(j>=vx[i].in){
+               ans[j]=max(ans[j],ans[j-vx[i].in]+vx[i].fn);
+                }
+        }
+      }
+cout<<ans[3*60];
+}
