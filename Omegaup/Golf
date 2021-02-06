@@ -1,0 +1,47 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+struct estado{
+int val;
+int pasos;
+};
+int n,dis;
+estado padre,hijo;
+queue<estado>cola;
+bool v[2000002];
+
+int main()
+{
+   cin>>dis>>n;
+   int v1[n];
+   for(int i=0;i<n;i++){
+    cin>>v1[i];
+   }
+   v[1]=true;
+   padre.val=0;
+   padre.pasos=0;
+    cola.push(padre);
+    while(!cola.empty()){
+        padre=cola.front();
+        cola.pop();
+        for(int i=0;i<n;i++){
+            hijo=padre;
+        hijo.val+=v1[i];
+        hijo.pasos++;
+        if(v[hijo.val]==false&&hijo.val<=1000000){
+            v[hijo.val]=true;
+           cola.push(hijo);}
+           if(hijo.val==dis){
+            cout<<hijo.pasos;
+              return 0;
+           }
+
+        }
+
+    }
+    cout<<"imposible";
+
+
+
+    return 0;
+}
