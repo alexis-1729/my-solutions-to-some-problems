@@ -1,0 +1,25 @@
+#include <iostream>
+
+using namespace std;
+int n;string pal;
+bool palindromo(int i,int j){
+  if(n==1)return true;
+  if(i==j)return true;
+     if(pal[i]!=pal[j]){return false;}
+
+       palindromo(i+1,j-1);
+       return true;
+}
+
+main()
+{
+    int t;
+    cin>>t;
+    while(t--){
+
+    cin>>pal;
+    n=pal.size();
+    if(palindromo(0,n-1)){cout<<"P\n";}else
+        cout<<"NP\n";
+        }
+}
