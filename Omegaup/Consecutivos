@@ -1,0 +1,14 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+int   n;int sum;int maxn,minx=10000;
+ main()
+{
+    ios_base::sync_with_stdio(0);cin.tie(0);
+    cin>>n;
+    for(int i=0;i<n;i++){int x;cin>>x;sum+=x;minx=min(minx,x);maxn=max(maxn,x);}
+      if(sum==(n*(maxn+minx)/2)){cout<<"SI";}else cout<<"NO";
+
+
+
+}
