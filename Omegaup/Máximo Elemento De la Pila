@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+int n;stack<int>p;
+ main()
+{ios_base::sync_with_stdio(0);cin.tie(0);
+  int n;cin>>n;
+    for(int i=0;i<n;i++){
+        int x;
+          cin>>x;
+          switch(x){
+                case 1:
+                    int y;
+                    cin>>y;
+                    if(p.empty()){p.push(y);}else{
+                         p.push(max(y,p.top()));}break;
+                         case 2:
+                         p.pop();
+                         break;
+                         case 3:
+                            cout<<p.top()<<"\n";
+                            break;
+                   default:
+                    break;
+          }
+    }
+}
