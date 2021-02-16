@@ -1,0 +1,29 @@
+// O(n) solution for finding maximum sum of
+// a subarray of size k
+#include <iostream>
+using namespace std;
+int arr[1000000],n,k;
+int  maxSum()
+{
+	int max_sum = 0;
+	for (int i = 0; i < k; i++)
+		max_sum += arr[i];
+
+
+	int window_sum = max_sum;
+	for (int i = k; i < n; i++) {
+		window_sum += arr[i] - arr[i - k];
+		max_sum=max(max_sum,window_sum);
+
+	}
+  return max_sum;
+
+}
+
+ main()
+{
+    ios_base::sync_with_stdio(0);cin.tie(0);
+	cin>>n>>k;
+	for(int i=0;i<n;i++)cin>>arr[i];
+	cout<<maxSum();
+}
