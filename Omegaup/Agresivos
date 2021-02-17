@@ -1,0 +1,34 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+int vx[100000];
+int n,c;	int a,b,m;
+bool  solve(int x){
+
+	  int v=1, mx=0;
+	for(int i=1;i<n;i++){
+		if(mx+vx[i]-vx[i-1]<=x)
+			mx+=vx[i]-vx[i-1];
+		else
+		v++,mx=0;
+	}
+    return (v >= c);
+}
+ main() {
+	ios_base::sync_with_stdio(0);cin.tie(0);
+	   cin>>n>>c;
+	   for(int i=0;i<n;i++)
+	   	cin>>vx[i];
+	  sort(vx,vx+n);
+
+
+	   a=0, b=vx[n-1]-vx[0];
+
+	   	  int ans=0;
+     while(a<=b){
+            m = (a+b)/2;
+            if(solve( m )) ans = m , a=m+1;
+            else b = m-1;
+        }
+		cout<<ans+1;
+}
