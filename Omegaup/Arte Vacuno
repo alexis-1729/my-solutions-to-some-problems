@@ -1,0 +1,70 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+int n,m;char mx[101][101],mv[101][101];
+bool mb[101][101];int ans=0,ans2=0;
+void solve(int i,int j ,char c){
+   if(i<1 || i>n || j<1 ||j>n || mb[i][j] || mx[i][j]!=c)return;
+       mb[i][j]=true;
+      solve(i+1,j,c);
+      solve(i-1,j,c);
+      solve(i,j+1,c);
+      solve(i,j-1,c);
+
+}
+  void pr(char c ){
+    for(int i=1;i<=n;i++){
+        for(int j=1;j<=n;j++){
+             if(mx[i][j]==c    && !mb[i][j] ){
+
+                solve(i,j,c);
+                ans++;
+             }
+
+        }
+    }
+
+
+  }
+  void solve2(int i,int j ,char c){
+   if(i<1 || i>n || j<1 ||j>n || mb[i][j] || mv[i][j]!=c)return;
+       mb[i][j]=true;
+      solve2(i+1,j,c);
+      solve2(i-1,j,c);
+      solve2(i,j+1,c);
+      solve2(i,j-1,c);
+
+}
+   void pr2(char c ){
+    for(int i=1;i<=n;i++){
+        for(int j=1;j<=n;j++){
+             if(mv[i][j]==c    && !mb[i][j] ){
+
+                solve2(i,j,c);
+                ans2++;
+             }
+
+        }
+    }
+
+
+  }
+ main()
+{
+    ios_base::sync_with_stdio(0);cin.tie(0);
+      cin>>n;
+      for(int i=1;i<=n;i++){
+        for(int j=1;j<=n;j++){
+             cin>>mx[i][j];
+             mv[i][j]=mx[i][j];
+             if(mx[i][j]=='G')mv[i][j]='R';
+        }}
+        pr('R');
+         pr('B');
+        pr('G');
+  memset(mb,false,sizeof(mb));
+  pr2('R');
+  pr2('B');
+    cout<<ans<<" "<<ans2;
+
+}
