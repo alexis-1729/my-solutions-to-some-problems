@@ -1,0 +1,51 @@
+#include <iostream>
+
+using namespace std;
+#define ll long long
+ll vx[]= {0,1,1,0,-1,-1,-1,0,1};
+ll vy[]= {0,0,-1,-1,-1,0,1,1,1};
+ll n,m,t; bool mb[101][101][501];  ll dp[101][101][501],mx[101][101],my[101][101],mz[101][101]; ll ans;
+  ll solve(ll x,ll y,ll ti ){
+       if(ti>t)return  0;
+         if(mb[x][y][ti])return dp[x][y][ti];
+         mb[x][y][ti]=true;
+         ll r=0;
+            if(ti>=mx[x][y] && (ti-mx[x][y])%my[x][y]==0)dp[x][y][ti]=mz[x][y];
+
+            for(int i=0;i<9;i++){
+                ll xr=x+vx[i];ll yr=y+vy[i];
+            if(xr<n && xr>=0 && yr<m && yr>=0){
+
+          r=max(r,solve(xr,yr,ti+1));}
+
+            }
+
+    return dp[x][y][ti]+=r;
+  }
+
+
+
+
+ main()
+{
+    ios_base::sync_with_stdio(0);cin.tie(0);
+    cin>>n>>m>>t;
+    for(int i=0;i<n;i++)
+        for(int j=0;j<m;j++)
+        cin>>mx[i][j];
+
+    for(int i=0;i<n;i++)
+        for(int j=0;j<m;j++)
+        cin>>my[i][j];
+
+        for(int i=0;i<n;i++)
+        for(int j=0;j<m;j++)
+        cin>>mz[i][j];
+
+         ans=0;
+         for(int i=0;i<n;i++)
+            for(int j=0;j<m;j++)
+               ans=max(ans,solve(i,j,1));
+
+         cout<<ans;
+}
